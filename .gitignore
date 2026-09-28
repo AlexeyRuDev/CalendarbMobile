@@ -1,0 +1,14 @@
+# Android/Gradle build artifacts
+build/
+.gradle/
+local.properties
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# OS files
+.DS_Store
+Thumbs.db
