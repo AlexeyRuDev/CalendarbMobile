@@ -37,6 +37,14 @@ class CalendarWidgetProvider : AppWidgetProvider() {
 
     override fun onReceive(context: Context, intent: Intent) {
         super.onReceive(context, intent)
+
+        // Клик по дню приходит только сюда (в onUpdate попадёт ACTION_DAY_CLICK с null-ids).
+        if (intent.action == WidgetState.ACTION_DAY_CLICK) {
+            val epochDay = intent.getLongExtra(WidgetState.EXTRA_EPOCH_DAY, -1L)
+            if (epochDay >= 0) openDay(context, LocalDate.ofEpochDay(epochDay))
+            return
+        }
+
         val manager = AppWidgetManager.getInstance(context)
         val ids = manager.getAppWidgetIds(ComponentName(context, CalendarWidgetProvider::class.java))
 
@@ -54,10 +62,6 @@ class CalendarWidgetProvider : AppWidgetProvider() {
                 refreshAll(context, manager, ids)
             }
             WidgetState.ACTION_DATA_CHANGED -> refreshAll(context, manager, ids)
-            WidgetState.ACTION_DAY_CLICK -> {
-                val epochDay = intent.getLongExtra(WidgetState.EXTRA_EPOCH_DAY, -1L)
-                if (epochDay >= 0) openDay(context, LocalDate.ofEpochDay(epochDay))
-            }
             else -> Unit
         }
     }

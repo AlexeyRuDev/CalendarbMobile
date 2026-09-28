@@ -3,6 +3,7 @@ package com.calendarb.widget
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.view.View
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import java.time.DayOfWeek
@@ -86,7 +87,7 @@ class DaysFactory(private val context: Context) : RemoteViewsService.RemoteViews
         val views = RemoteViews(context.packageName, R.layout.widget_day_cell)
 
         if (cell.date == null) {
-            views.setViewVisibility(R.id.day_number, android.view.View.INVISIBLE)
+            views.setViewVisibility(R.id.day_number, View.INVISIBLE)
             hideDots(views)
             return views
         }
@@ -120,17 +121,17 @@ class DaysFactory(private val context: Context) : RemoteViewsService.RemoteViews
 
     private fun showDot(views: RemoteViews, viewId: Int, color: Int) {
         if (color == Color.TRANSPARENT) {
-            views.setViewVisibility(viewId, android.view.View.INVISIBLE)
+            views.setViewVisibility(viewId, View.INVISIBLE)
         } else {
-            views.setViewVisibility(viewId, android.view.View.VISIBLE)
+            views.setViewVisibility(viewId, View.VISIBLE)
             views.setInt(viewId, "setColorFilter", color)
         }
     }
 
     private fun hideDots(views: RemoteViews) {
-        views.setViewVisibility(R.id.dot_low, android.view.View.INVISIBLE)
-        views.setViewVisibility(R.id.dot_medium, android.view.View.INVISIBLE)
-        views.setViewVisibility(R.id.dot_high, android.view.View.INVISIBLE)
+        views.setViewVisibility(R.id.dot_low, View.INVISIBLE)
+        views.setViewVisibility(R.id.dot_medium, View.INVISIBLE)
+        views.setViewVisibility(R.id.dot_high, View.INVISIBLE)
     }
 
     override fun loadingView(): RemoteViews? = null

@@ -1,7 +1,6 @@
 package com.calendarb.widget.data
 
 import android.content.Context
-import androidx.room.Room
 import java.time.LocalDate
 
 /**
@@ -10,9 +9,7 @@ import java.time.LocalDate
  */
 class TaskRepository private constructor(context: Context) {
 
-    private val dao: TaskDao = Room.databaseBuilder(
-        context.applicationContext, AppDatabase::class.java, "calendarb.db"
-    ).build().taskDao()
+    private val dao: TaskDao = AppDatabase.get(context).taskDao()
 
     fun addTask(
         title: String,

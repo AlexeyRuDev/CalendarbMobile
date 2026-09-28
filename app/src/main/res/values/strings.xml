@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calendarb</string>
+    <string name="widget_name">Календарь задач</string>
+
+    <!-- Виджет -->
+    <string name="widget_prev_month">Предыдущий месяц</string>
+    <string name="widget_next_month">Следующий месяц</string>
+    <string name="widget_today">Сегодня</string>
+    <string name="widget_add_task">Добавить задачу</string>
+    <string name="widget_empty_month">Нет данных</string>
+
+    <!-- Дни недели (первый — понедельник) -->
+    <string name="weekday_mon">Пн</string>
+    <string name="weekday_tue">Вт</string>
+    <string name="weekday_wed">Ср</string>
+    <string name="weekday_thu">Чт</string>
+    <string name="weekday_fri">Пт</string>
+    <string name="weekday_sat">Сб</string>
+    <string name="weekday_sun">Вс</string>
+
+    <!-- MainActivity -->
+    <string name="main_no_tasks">На эту дату задач нет</string>
+    <string name="main_fab">Добавить задачу</string>
+
+    <!-- TaskEditActivity -->
+    <string name="add_task">Новая задача</string>
+    <string name="edit_task">Редактирование задачи</string>
+    <string name="task_title_hint">Заголовок</string>
+    <string name="task_description_hint">Описание (необязательно)</string>
+    <string name="task_date_label">Дата</string>
+    <string name="task_time_label">Время</string>
+    <string name="task_importance_label">Важность</string>
+    <string name="importance_low">Низкая</string>
+    <string name="importance_medium">Средняя</string>
+    <string name="importance_high">Высокая</string>
+    <string name="action_save">Сохранить</string>
+    <string name="action_delete">Удалить</string>
+    <string name="error_title_required">Введите заголовок</string>
+
+    <!-- Уведомления -->
+    <string name="notification_channel_name">Ежедневные напоминания</string>
+    <string name="notification_channel_desc">Задачи на текущий день, сгруппированные по важности</string>
+    <string name="notification_title">Задачи на сегодня: %1$d</string>
+    <string name="notification_summary">План на день</string>
+</resources>
