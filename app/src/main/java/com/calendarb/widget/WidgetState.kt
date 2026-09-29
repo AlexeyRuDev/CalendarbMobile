@@ -4,7 +4,6 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import androidx.core.content.ContextCompat
 import java.time.LocalDate
 import java.time.YearMonth
 
@@ -53,11 +52,13 @@ object WidgetState {
         }
     }
 
-    /** Сообщить приложению, что данные изменились — обновить список задач. */
+    /** Сообщить виджету, что данные изменились — обновить все экземпляры. */
     fun notifyDataChanged(context: Context) {
         val intent = Intent(context, CalendarWidgetProvider::class.java).apply {
             action = ACTION_DATA_CHANGED
         }
-        ContextCompat.sendBroadcast(context, intent)
+        // Явная broadcast-рассылка на компонент провайдера: ContextCompat.sendBroadcast
+        // не существует, поэтому используем стандартный Context.sendBroadcast.
+        context.sendBroadcast(intent)
     }
 }
