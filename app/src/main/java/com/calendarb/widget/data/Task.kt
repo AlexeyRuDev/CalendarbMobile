@@ -1,5 +1,6 @@
 package com.calendarb.widget.data
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
@@ -8,7 +9,8 @@ import androidx.room.PrimaryKey
  * Задача. Хранится в Room.
  *
  * @param dateEpochDay  день в формате LocalDate.toEpochDay() — по нему виджет отмечает даты
- * @param timeOfDay     отсортированное время "HH:mm" для отображения и порядка задач
+ * @param dateTimeSorted стабильный ключ сортировки (секунды с эпохи) — хранится в БД,
+ *                       чтобы запросы `ORDER BY dateTimeSorted` и индекс работали на уровне SQLite
  */
 @Entity(
     tableName = "tasks",
@@ -21,12 +23,10 @@ data class Task(
     val dateEpochDay: Long,
     val hour: Int,
     val minute: Int,
-    val importance: TaskImportance
+    val importance: TaskImportance,
+    @ColumnInfo(defaultValue = "0") val dateTimeSorted: Long =
+        dateEpochDay * SEC_IN_DAY + hour * SEC_IN_HOUR + minute * SEC_IN_MIN
 ) {
-    /** Стабильный ключ сортировки по датам и времени. */
-    val dateTimeSorted: Long
-        get() = dateEpochDay * SEC_IN_DAY + hour * SEC_IN_HOUR + minute * SEC_IN_MIN
-
     companion object {
         const val SEC_IN_MIN = 60L
         const val SEC_IN_HOUR = 60L * SEC_IN_MIN
