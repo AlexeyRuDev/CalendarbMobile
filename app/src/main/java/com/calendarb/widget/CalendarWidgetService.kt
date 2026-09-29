@@ -134,7 +134,6 @@ class DaysFactory(private val context: Context) : RemoteViewsService.RemoteViews
         views.setViewVisibility(R.id.dot_high, View.INVISIBLE)
     }
 
-    override fun loadingView(): RemoteViews? = null
     override fun getLoadingView(): RemoteViews? = null
     override fun getViewTypeCount(): Int = 1
     override fun getItemId(position: Int): Long = position.toLong()
